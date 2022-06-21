@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ra.boot.mapper.EmployeeMapper">
+
+    <resultMap id="BaseResultMap" type="EmployeeEntity">
+            <id property="employeeId" column="employee_id" jdbcType="INTEGER"/>
+            <result property="employeeName" column="employee_name" jdbcType="VARCHAR"/>
+            <result property="employeeAge" column="employee_age" jdbcType="INTEGER"/>
+            <result property="employeeDepartment" column="employee_department" jdbcType="VARCHAR"/>
+            <result property="employeeHiredate" column="employee_hiredate" jdbcType="DATE"/>
+            <result property="employeeUpId" column="employee_up_id" jdbcType="INTEGER"/>
+            <result property="employeeLevel" column="employee_level" jdbcType="INTEGER"/>
+            <result property="employeeProvince" column="employee_province" jdbcType="VARCHAR"/>
+            <result property="employeeCity" column="employee_city" jdbcType="VARCHAR"/>
+            <result property="employeeCounty" column="employee_county" jdbcType="INTEGER"/>
+            <result property="employeePhone" column="employee_phone" jdbcType="VARCHAR"/>
+            <result property="employeePhoneContact" column="employee_phone_contact" jdbcType="VARCHAR"/>
+            <result property="employeePic" column="employee_pic" jdbcType="VARCHAR"/>
+            <result property="employeeContent" column="employee_content" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="getEmployee" resultType="EmployeeEntity">
+        select * from employee
+    </select>
+
+    <insert id="addEmployee" useGeneratedKeys="true" keyProperty="employeeId">
+        insert into employee(`employee_name`,`employee_age`,`employee_department`,`employee_hiredate`,`employee_up_id`,`employee_level`,`employee_province`,`employee_city`,`employee_county`,`employee_phone`,`employee_phone_contact`,`employee_pic`,`employee_content`)
+                values(#{employeeName},#{employeeAge},#{employeeDepartment},#{employeeHiredate},#{employeeUpId},#{employeeLevel},#{employeeProvince},#{employeeCity},#{employeeCounty},#{employeePhone},#{employeePhoneContact},#{employeePic},#{employeeContent})
+    </insert>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ra.boot.mapper.CustomerProductMapper">
+
+    <resultMap id="BaseResultMap" type="CustomerProductEntity">
+            <id property="customerProductId" column="customer_product_id" jdbcType="INTEGER"/>
+            <result property="productId" column="product_id" jdbcType="INTEGER"/>
+            <result property="productNum" column="product_num" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <select id="getCustomerProduct" resultType="CustomerProductEntity">
+        select * from customer_product
+    </select>
+
+    <insert id="insertCustomerProduct" useGeneratedKeys="true" keyProperty="customerProductId">
+        insert into customer_product(`customer_product_id`,`product_id`,`product_num`)
+                            values(#{customerProductId},#{productId},#{productNum})
+    </insert>
+<!--    <insert id="insertCustomerProduct">-->
+<!--        insert into customer_product(`product_id`,`product_num`)-->
+<!--                            values(#{productId},#{productNum})-->
+<!--    </insert>-->
+
+</mapper>

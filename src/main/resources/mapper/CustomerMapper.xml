@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ra.boot.mapper.CustomerMapper">
+
+    <resultMap id="BaseResultMap" type="CustomerEntity">
+            <id property="customerId" column="customer_id" jdbcType="INTEGER"/>
+            <result property="customerName" column="customer_name" jdbcType="VARCHAR"/>
+            <result property="customerAge" column="customer_age" jdbcType="INTEGER"/>
+            <result property="customerSex" column="customer_sex" jdbcType="INTEGER"/>
+            <result property="customerPhone" column="customer_phone" jdbcType="VARCHAR"/>
+            <result property="customerAddress" column="customer_address" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="getCustomer" resultType="CustomerEntity">
+        select * from customer
+    </select>
+
+    <insert id="insertCustomer" useGeneratedKeys="true" keyProperty="customerId">
+        insert into customer(`customer_id`,`customer_name`,`customer_age`,`customer_sex`,`customer_phone`,`customer_address`)
+                    values(#{customerId},#{customerName},#{customerAge},#{customerSex},#{customerPhone},#{customerAddress})
+    </insert>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ra.boot.mapper.DepartmentMapper">
+
+    <resultMap id="BaseResultMap" type="DepartmentEntity">
+            <id property="departmentId" column="department_id" jdbcType="INTEGER"/>
+            <result property="departmentName" column="department_name" jdbcType="VARCHAR"/>
+            <result property="departmentContent" column="department_content" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <select id="getDepartment" resultType="DepartmentEntity">
+        select * from department
+    </select>
+
+    <insert id="insertDepartment" useGeneratedKeys="true" keyProperty="departmentId">
+        insert into department(`department_id`,`department_name`,`department_content`)
+                       values(#{departmentId},#{departmentName},#{departmentContent})
+    </insert>
+
+</mapper>

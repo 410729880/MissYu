@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ra.boot.mapper.CusumeMapper">
+
+    <resultMap id="BaseResultMap" type="CusumeEntity">
+            <id property="cusumeId" column="cusume_id" jdbcType="INTEGER"/>
+            <result property="cusumeDate" column="cusume_date" jdbcType="TIMESTAMP"/>
+            <result property="employeeId" column="employee_id" jdbcType="INTEGER"/>
+            <result property="employeeType" column="employee_type" jdbcType="INTEGER"/>
+            <result property="productId" column="product_id" jdbcType="INTEGER"/>
+            <result property="cusumeNum" column="cusume_num" jdbcType="INTEGER"/>
+            <result property="cusumePicsId" column="cusume_picsId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="getCusume" resultType="CusumeEntity">
+        select * from cusume
+    </select>
+
+    <insert id="insertCusume" useGeneratedKeys="true" keyProperty="cusumeId">
+        insert into cusume(`cusume_id`,`cusume_date`,`employee_id`,`employee_type`,`product_id`,`cusume_num`,`cusume_pics_id`)
+                  values(#{cusumeId},#{cusumeDate},#{employeeId},#{employeeType},#{productId},#{cusumeNum},#{cusumePicsId})
+    </insert>
+
+</mapper>
